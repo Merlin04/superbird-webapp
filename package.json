@@ -1,5 +1,5 @@
 {
-  "name": "superbird",
+  "name": "superbird-webapp",
   "version": "0.39.11+decomp",
   "type": "module",
   "scripts": {
