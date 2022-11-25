@@ -19,6 +19,7 @@ import createTipsOnDemandUiState, {
   TipsOnDemandUiState,
 } from 'component/Settings/TipsOnDemand/TipsOnDemandUiState';
 import Socket from 'Socket';
+import { getModsView, ModsMenuItemId } from "../mods/menu";
 
 export enum MainMenuItemId {
   SETTINGS_ROOT = 'SETTINGS_ROOT',
@@ -30,6 +31,7 @@ export enum MainMenuItemId {
   RESTART = 'RESTART',
   DEVELOPER_OPTIONS = 'DEVELOPER_OPTIONS',
   OTHER_VOICE_ASSISTANTS = 'OTHER_VOICE_ASSISTANTS',
+  MODS = 'MODS',
 }
 
 export enum OptionsMenuItemId {
@@ -62,7 +64,8 @@ export type MenuItemId =
   | MainMenuItemId
   | OptionsMenuItemId
   | AboutMenuItemId
-  | RestartMenuItemId;
+  | RestartMenuItemId
+  | ModsMenuItemId;
 
 export enum AnimationType {
   BOTTOM_UP,
@@ -267,6 +270,8 @@ class SettingsStore {
     this.licenseView,
   ];
 
+  modsView: View = getModsView();
+
   // Only use copies of this object
   settings: View = {
     id: MainMenuItemId.SETTINGS_ROOT,
@@ -304,6 +309,7 @@ class SettingsStore {
         visible: () => true,
         type: 'parent',
       },
+      this.modsView,
       {
         id: MainMenuItemId.TIPS,
         label: 'Tips',

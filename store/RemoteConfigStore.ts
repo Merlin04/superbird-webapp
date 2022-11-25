@@ -85,7 +85,9 @@ class RemoteConfigStore {
   }
 
   get showDeveloperMenu(): boolean {
-    return this.remoteConfig.developer_menu_enabled;
+    return this.rootStore.modsController.showDeveloperOptionsEnabled
+      ? true
+      : this.remoteConfig.developer_menu_enabled;
   }
 
   get podcastTrailerEnabled(): boolean {

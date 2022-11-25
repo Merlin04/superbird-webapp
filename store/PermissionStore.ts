@@ -47,8 +47,8 @@ class PermissionsStore {
     try {
       const result = await this.interappActions.getPermissions();
       runInAction(() => {
-        this.canUseCarThing = result.can_use_superbird;
-        this.canPlayOnDemand = result.can_play_on_demand;
+        this.canUseCarThing = /*result.can_use_superbird*/ true;
+        this.canPlayOnDemand = /*result.can_play_on_demand*/ true;
       });
     } catch (e: any) {
       this.errorHandler.logUnexpectedError(e, 'Failed to get permissions');
@@ -58,8 +58,8 @@ class PermissionsStore {
   onEvent(msg: PermissionStatusEvent) {
     switch (msg.type) {
       case 'device_permissions':
-        this.canUseCarThing = msg.can_use_superbird;
-        this.canPlayOnDemand = msg.can_play_on_demand;
+        this.canUseCarThing = /*msg.can_use_superbird*/ true;
+        this.canPlayOnDemand = /*msg.can_play_on_demand*/ true;
         break;
       default:
         break;

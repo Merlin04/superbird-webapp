@@ -15,7 +15,9 @@ type Props = {
 };
 
 const Artwork = ({ tracks, getAnimationClassNames }: Props) => {
-  const uiState = useStore().npvStore.playingInfoUiState;
+  const rootStore = useStore();
+  const uiState = rootStore.npvStore.playingInfoUiState;
+  const modsController = rootStore.modsController;
 
   const lastImageUri = useRef(uiState.currentItem.image_uri);
   const doAnimate =
@@ -56,7 +58,7 @@ const Artwork = ({ tracks, getAnimationClassNames }: Props) => {
               <LazyImage
                 uri={track.uri}
                 size={248}
-                imageId={track.image_uri}
+                imageId={modsController.muteAdsEnabled && uiState.isPlayingMusicAd ? "" : track.image_uri}
                 onClick={uiState.handleArtworkClick}
                 dataTestId="npv-artwork"
               />

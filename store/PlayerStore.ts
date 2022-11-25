@@ -13,6 +13,7 @@ import {
 } from '@spotify-internal/uri';
 import { QueueItem } from './QueueStore';
 import { isCollectionUri } from 'helpers/SpotifyUriUtil';
+import { isPlayingAdHook } from "../mods/muteAds";
 
 type MiddlewareEventMessage = {
   type: string;
@@ -223,7 +224,9 @@ class PlayerStore {
   }
 
   get isPlayingAd() {
-    return isAdURI(this.currentTrackUri);
+    const val = isAdURI(this.currentTrackUri);
+    isPlayingAdHook(val);
+    return val;
   }
 
   get playbackSpeed() {

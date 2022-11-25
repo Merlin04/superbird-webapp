@@ -48,6 +48,7 @@ import PromoController from 'component/Promo/PromoController';
 import DisconnectedLogger from 'eventhandler/DisconnectedLogger';
 import SeedableStorageInterface from 'middleware/SeedableStorageInterface';
 import { reaction } from 'mobx';
+import { ModsController } from "../mods/menu";
 
 export type RootStoreProps = {
   store: RootStore;
@@ -97,6 +98,7 @@ export class RootStore {
   phoneCallController: PhoneCallController;
   nightModeController: NightModeController;
   airVentInterferenceController: AirVentInterferenceController;
+  modsController: ModsController;
   persistentStorage: SeedableStorageInterface;
 
   constructor(
@@ -197,6 +199,7 @@ export class RootStore {
     this.shelfStore = new ShelfStore(this, interappActions);
     this.nightModeController = new NightModeController(this);
     this.settingsStore = new SettingsStore(this, middlewareActions, socket);
+    this.modsController = new ModsController(this);
     this.promoController = new PromoController(this, middlewareActions);
     this.presetsController = new PresetsController(this, interappActions);
     this.phoneConnectionStore = new PhoneConnectionStore(

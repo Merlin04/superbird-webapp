@@ -8,6 +8,7 @@ import { MainMenuItemId, View } from 'store/SettingsStore';
 import {
   IconGears64,
   IconInfo64,
+  IconLibraryActive,
   IconMicOff64,
   IconMicOn64,
   IconMobile64,
@@ -52,6 +53,7 @@ export const iconMapping = {
   [MainMenuItemId.RESTART]: <IconPower64 />,
   [MainMenuItemId.DEVELOPER_OPTIONS]: <IconGears64 />,
   [MainMenuItemId.OTHER_VOICE_ASSISTANTS]: <IconOtherVoice iconSize={64} />,
+  [MainMenuItemId.MODS]: <IconLibraryActive iconSize={64} />,
 };
 
 const contentMapping = {

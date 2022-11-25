@@ -59,6 +59,7 @@ class NpvStore {
       rootStore.airVentInterferenceController.windAlertBannerUiState,
       this.swipeHandler,
       rootStore.ubiLogger.npvUbiLogger,
+      rootStore.modsController,
     );
 
     this.scrubbingUiState = new ScrubbingUiState(

@@ -7,6 +7,7 @@ import SettingsStore, {
 } from 'store/SettingsStore';
 import PhoneCallController from 'component/PhoneCall/PhoneCallController';
 import VersionStatusStore from 'store/VersionStatusStore';
+import { getKeyValueHook, handleSubmenuItemSelectedHook, isToggleOnHook } from "../../../mods/menu";
 
 export type SubmenuUiState = ReturnType<typeof createSubmenuUiState>;
 
@@ -38,7 +39,7 @@ const createSubmenuUiState = (
           case OptionsMenuItemId.PHONE_CALLS_TOGGLE:
             return phoneCallController.isUserEnabled;
           default:
-            return false;
+            return isToggleOnHook(item);
         }
       },
 
@@ -50,6 +51,7 @@ const createSubmenuUiState = (
 
         return {
           ...values,
+          app_version: `${values.app_version}-modded`,
           os_version: values.os_version.replace('-release', ''),
           country: 'Sweden',
           hvin: values.model_name,
@@ -62,6 +64,8 @@ const createSubmenuUiState = (
         if (AboutMenuItemId[item.id]) {
           return this.aboutValues?.[item.id.toLowerCase()] ?? '';
         }
+        const hookRes = getKeyValueHook(item);
+        if(hookRes !== false) return hookRes;
         throw new Error(`Unable to get value of key value for [${item.id}]`);
       },
 
@@ -87,7 +91,7 @@ const createSubmenuUiState = (
           tipsUiState.toggleTipsEnabled();
         } else if (item.id === OptionsMenuItemId.PHONE_CALLS_TOGGLE) {
           phoneCallController.toggleIsUserEnabled();
-        } else {
+        } else if(!handleSubmenuItemSelectedHook(item)) {
           settingsStore.gotoView(item);
         }
       },

@@ -154,6 +154,7 @@ class HardwareEvents {
   };
 
   private keyDownEventHandler = (event: KeyboardEvent) => {
+    if(globalThis.dinoOpen) return;
     switch (event.code) {
       case EventCode.ENTER:
         if (!this.keysDown.has(event.code)) {
@@ -188,6 +189,7 @@ class HardwareEvents {
   };
 
   private keyUpEventHandler = (event: KeyboardEvent) => {
+    if(globalThis.dinoOpen) return;
     switch (event.code) {
       case EventCode.ENTER:
         this.keysDown.delete(event.code);

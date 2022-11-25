@@ -15,6 +15,7 @@ import VoiceStore from 'store/VoiceStore';
 import WindAlertBannerUiState from 'component/Npv/WindAlertBanner/WindAlertBannerUiState';
 import RemoteConfigStore from 'store/RemoteConfigStore';
 import { OverlayController } from 'component/Overlays/OverlayController';
+import { ModsController } from "../../../mods/menu";
 
 export default class PlayingInfoUiState {
   imageStore: ImageStore;
@@ -24,6 +25,7 @@ export default class PlayingInfoUiState {
   tracklistStore: TracklistStore;
   voiceStore: VoiceStore;
   npvUbiLogger: NpvUbiLogger;
+  modsController: ModsController;
   swipeHandler: SwipeHandler;
   overlayController: OverlayController;
   remoteConfigStore: RemoteConfigStore;
@@ -41,6 +43,7 @@ export default class PlayingInfoUiState {
     windAlertBannerUiState: WindAlertBannerUiState,
     swipeHandler: SwipeHandler,
     npvUbiLogger: NpvUbiLogger,
+    modsController: ModsController,
   ) {
     makeAutoObservable(this, {
       imageStore: false,
@@ -54,6 +57,7 @@ export default class PlayingInfoUiState {
       windAlertBannerUiState: false,
       swipeHandler: false,
       npvUbiLogger: false,
+      modsController: false,
       currentItem: computed.struct,
       previousItem: computed.struct,
       nextItem: computed.struct,
@@ -70,6 +74,7 @@ export default class PlayingInfoUiState {
     this.windAlertBannerUiState = windAlertBannerUiState;
     this.swipeHandler = swipeHandler;
     this.npvUbiLogger = npvUbiLogger;
+    this.modsController = modsController;
   }
 
   get isPlayingMusicAd() {
@@ -81,7 +86,7 @@ export default class PlayingInfoUiState {
 
   get title() {
     return this.isPlayingMusicAd
-      ? this.playerStore.currentTrackArtistName
+      ? (this.modsController.muteAdsEnabled ? ADVERTISEMENT : this.playerStore.currentTrackArtistName)
       : this.currentItem.name || this.playerStore.currentTrack.name;
   }
 

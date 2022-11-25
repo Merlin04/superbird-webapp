@@ -55,7 +55,7 @@ window.addEventListener(
 );*/
 
 // Setup mobx stores
-const rootStore = new RootStore(
+export const rootStore = new RootStore(
   interappActions,
   middlewareActions,
   middlewareStorage,
