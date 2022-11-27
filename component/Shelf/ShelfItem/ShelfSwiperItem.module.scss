@@ -1,7 +1,7 @@
 @use 'sass:math';
 
 // https://github.com/stylelint/stylelint/issues/5492
-@import 'style/variables'; /* stylelint-disable no-invalid-position-at-import-rule */
+@import 'style/variables.module'; /* stylelint-disable no-invalid-position-at-import-rule */
 
 $slide-width: 240px;
 

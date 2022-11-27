@@ -1,6 +1,6 @@
 // shim for sass constants
 
-import variables from './_variables.scss';
+import variables from './variables.module.scss';
 
 export const transitionDurationMs = parseInt(
   variables['transition-duration-ms'],

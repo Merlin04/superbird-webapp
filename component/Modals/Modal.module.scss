@@ -1,4 +1,4 @@
-@import 'style/variables';
+@import 'style/variables.module';
 
 .title {
   @include text-style(52px, 56px, -0.03em);
