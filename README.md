@@ -46,4 +46,4 @@ Thanks to:
 - @bishopdynamics for [superbird-tool](https://github.com/bishopdynamics/superbird-tool)
 - @frederic for the [original hack](https://github.com/frederic/superbird-bulkcmd)
 - @NekoLines for using this as the basis for a [Chinese translation of the app](https://github.com/NekoLines/Spotify-Car-Thing-Chinese-Webapps)
-- The rest of the Car Thing Hax community ([Discord](https://discord.gg/HbG9eehT), [GitHub](https://github.com/err4o4/spotify-car-thing-reverse-engineering/issues)) for their work on the device that made this possible!
+- The rest of the Car Thing Hax community ([Discord](https://discord.com/invite/Ggb8eXVKwr), [GitHub](https://github.com/err4o4/spotify-car-thing-reverse-engineering/issues)) for their work on the device that made this possible!
